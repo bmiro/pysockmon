@@ -1,12 +1,8 @@
-
-server = 'localhost'
-server_port = 6969
-
-hello = '{"username": "fucking_strange_login", \
-          "password": "onlyhilariusexample"}\r'
+hello = '{"username": "stupid", "password": "example"}'
 
 bufsize = 4096
-read_threshold = 64
+read_threshold = 4096
+initial_read = bufsize * 4
 
 client_timeout = 2
 check_delay = 1
@@ -17,9 +13,11 @@ heartbeat_msg = "Heartbeat"
 exit_on_warning = False
 exit_on_error = False
 
-ok_cmd = "echo OK"
-warning_cmd = "echo warning"
-error_cmd = "echo error; beep" 
+pass_read_exec = False
+
+success_exec = "echo OK"
+warning_exec = "echo warning; beep"
+error_exec = "echo error; beep" 
 
 def serverside_login(client_sock):
     msg = client_sock.recv(len(hello))
@@ -41,6 +39,3 @@ def clientside_login(server_sock):
         sleep(0.2)
         read = len(server_sock.recv(bufsize))
         stable = read != bufsize
-        
-
-

@@ -1,1 +1,1 @@
-termcolor # python3-termcolor
+click # python3-click

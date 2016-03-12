@@ -10,7 +10,7 @@ import config
 
 if '__main__' == __name__:
 
-    conn = (config.server, config.server_port)
+    conn = ('localhost', 6969)
 
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
