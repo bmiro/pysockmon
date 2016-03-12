@@ -21,7 +21,7 @@ if '__main__' == __name__:
 
     (client, address) = server.accept()
 
-    config.serverside_login(client)
+    config.serverside_login(client, config.hello)
 
     while True:        
         msg = config.heartbeat_msg

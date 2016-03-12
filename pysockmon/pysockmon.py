@@ -7,9 +7,9 @@ import socket
 from sys import exit
 from time import sleep
 
-from common import shell_exec
+from pysockmon.common import shell_exec
 
-import config
+import pysockmon.config as config
 
 @click.command()
 @click.option('--exit-on-error', flag_value=config.exit_on_error)
@@ -21,11 +21,12 @@ import config
 @click.option('--warning-exec', default=config.warning_exec)
 @click.option('--error-exec', default=config.error_exec)
 @click.option('--timeout', default=config.client_timeout)
+@click.option('--hello', default=config.hello)
 @click.option('--bufsize', default=config.bufsize)
 @click.argument('connection', type=click.Tuple([str, int]))
 def pysockmon(exit_on_error, exit_on_warning, pass_read_exec, read_threshold,
               check_delay, success_exec, warning_exec, error_exec,
-              timeout, bufsize,
+              timeout, hello, bufsize,
               connection):
 
     print(bufsize); exit
@@ -33,7 +34,7 @@ def pysockmon(exit_on_error, exit_on_warning, pass_read_exec, read_threshold,
     sock.settimeout(timeout)
     sock.connect(connection)
 
-    config.clientside_login(sock)    
+    config.clientside_login(sock, hello)    
 
     while True:
         try:

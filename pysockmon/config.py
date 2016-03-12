@@ -1,4 +1,4 @@
-hello = '{"username": "stupid", "password": "example"}'
+hello = '{"username": "dummy", "password": "example"}'
 
 bufsize = 4096
 read_threshold = 4096
@@ -19,13 +19,13 @@ success_exec = "echo OK"
 warning_exec = "echo warning; beep"
 error_exec = "echo error; beep" 
 
-def serverside_login(client_sock):
+def serverside_login(client_sock, hello):
     msg = client_sock.recv(len(hello))
     print("Client hellowed!")
 
 
-def clientside_login(server_sock):
-    from common import send
+def clientside_login(server_sock, hello):
+    from pysockmon.common import send
     from time import sleep
 
     send(server_sock, hello)

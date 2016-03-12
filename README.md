@@ -22,7 +22,13 @@ are acumulated and the script looses responsiveness.
 
 Almost all config.py options can also be given as cli argument.
 
+# Install
+
+python3 setup.py install
+
 # Usage example
 
-/pysockmon.py --success-exec "printf \"%s: OK\n\" \"$(date)\"" --warning-exec "echo 'WARNING'; beep" --error-exec "echo ERROR; beep; beep; beep;" --read-threshold 9 localhost 6969
+python pysockmon/test_server.py
+
+pysockmon --success-exec "printf \"%s: OK\n\" \"$(date)\"" --warning-exec "echo 'WARNING'; beep" --error-exec "echo ERROR; beep; beep; beep;" --read-threshold 9 localhost 6969
 
